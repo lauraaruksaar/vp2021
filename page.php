@@ -14,20 +14,19 @@
 		if($hour_now >= 8 and $hour_now <= 18){
 			$time_category = "tundide aeg";
 		}
-		if($hour_now <= 18 and $hour_now < 23){
-					$time_category = "vaba aeg";
+		if($hour_now >= 18 and $hour_now < 23){
+			$time_category = "vaba aeg";
 		}
 	
 	} else {
 		$day_category = "puhkepäev";
-		$time_category = "lihtsalt aeg";
 		if($hour_now > 11 or $hour_now >= 2){
 			$time_category = "uneaeg";
-			if($hour_now <= 11 and $hour_now < 2){
-				$time_category = "vaba aeg";	
-			}
-		}	
-	} 
+		}
+		if($hour_now <= 11 and $hour_now < 2){
+			$time_category = "vaba aeg";
+		}			
+	}
 	
 	$weekday_names_et = ["esmaspäev", "teisipäev", "kolmapäev", "neljapäev", "reede", "laupäev", "pühapäev"];
 	
