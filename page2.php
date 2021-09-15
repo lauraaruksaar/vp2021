@@ -60,9 +60,9 @@
 	
 	
 	
-	$photo_select_html ="\n" '<select_name="photo_select">' ."\n";
+	$photo_select_html ="\n" .'<select name="photo_select">' ."\n";
 	for($i = 0;$i < $file_count;$i ++){
-		$photo_select_html .= '<option_value="' .$i .'">' .$photo_files[$i] ."</options> \n";
+		$photo_select_html .= '<option value="' .$i .'">' .$photo_files[$i] ."</option> \n";
 	}
 	$photo_select_html .= "</select> \n";
 ?>
@@ -86,6 +86,8 @@
 	<hr>
 	<form method="POST">
 		<?php echo $photo_select_html; ?>
+		</form>
+
 	<hr>
 	<?php
 	echo $photo_html;
