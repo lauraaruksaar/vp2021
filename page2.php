@@ -19,9 +19,9 @@
 		}
 	}
 
-	//juhusliku foto lisamine
+	//juhusliku foto lisamine jqwe
 	$photo_dir = "photos/";
-	//loen kataloogi sisu
+	//loen kataloogi sisue weqwejgfgfhgkj
 	$all_files = scandir($photo_dir);
 	$all_real_files = array_slice($all_files, 2);
 	
@@ -42,8 +42,13 @@
 	$file_count = count($photo_files);
 	//loosin juhusliku arvu (esimene peab olema 0 ja max count - 1)
 	$photo_num = mt_rand(0, $file_count - 1);
+	
+	 if(isset($_POST["photo_select_submit"])){
+		$photo_num = $_POST["photo_select"];
+	}
 	//<img src="kataloog/fail" alt="Tallinna Ülikool">
 	$photo_html = '<img src="' .$photo_dir .$photo_files[$photo_num] .'"alt="Tallinna Ülikool">';
+	$photo_file_html = "\n <p>".$photo_files[$photo_num] ."</p> \n";
 	//tsükkel
 	//näiteks:
 	//<ul>
@@ -57,12 +62,18 @@
 		$photo_list_html .= "<li>" .$photo_files[$i] ."</li> \n";
 	}
 	$photo_list_html .= "</ul> \n";
+
 	
 	
 	
 	$photo_select_html ="\n" .'<select name="photo_select">' ."\n";
 	for($i = 0;$i < $file_count;$i ++){
-		$photo_select_html .= '<option value="' .$i .'">' .$photo_files[$i] ."</option> \n";
+		$photo_select_html .= '<option value="' .$i .'"';
+		
+	if($i == $photo_num){
+			$photo_select_html .= " selected";
+		}
+	$photo_select_html .= '>' .$photo_files[$i] ."</option> \n";
 	}
 	$photo_select_html .= "</select> \n";
 ?>
@@ -86,12 +97,15 @@
 	<hr>
 	<form method="POST">
 		<?php echo $photo_select_html; ?>
+	<input type="submit" name="photo_select_submit" value="valitud foto">
 		</form>
 
 	<hr>
 	<?php
 	echo $photo_html;
 	echo $photo_list_html;
+	echo "<hr> \n";
+	echo $photo_html;
 	?>
 
 </body>
