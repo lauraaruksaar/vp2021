@@ -4,14 +4,59 @@
 	//echo $server_host;
 	$author_name = "Laura Aruksaar";
 	$film_store_notice = null;
+	$title_input = null;
+	$title_input_error = null;
+	$genre_input = null;
+	$genre_input_error = null;
+	$studio_input = null;
+	$studio_input_error = null;
+	$director_input = null;
+	$director_input_error = null;
+	$year_input = null;
+	$year_input_error = null;
+	$duration_input = null;
+	$duration_input_error = null;
 	
 	if(isset($_POST["film_submit"])){
-		if(!empty($_POST["title_input"]) and !empty($_POST["genre_input"]) and !empty($_POST["studio_input"]) and !empty($_POST["director_input"])){
-		$film_store_notice = store_film($_POST["title_input"], $_POST["year_input"], $_POST["duration_input"], $_POST["genre_input"], $_POST["studio_input"], $_POST["director_input"]);
+			if(!empty($_POST["title_input"])){
+				$title_input = $_POST["title_input"];
+			} else {
+				$title_input_error = "Sisesta filmi pealkrir.";
+			}
+			if (!empty($_POST["year_input"])){
+				$year_input = $_POST["year_input"];
+			} else {
+				$year_input_error = "Sisesta filmi pealkiri.";
+			}
+			if(!empty($_POST["duration_input"])){
+				$year_input = $_POST["duration_input"];
+			} else {
+				$year_input_error = "Sisesta filmi kestus";
+			}
+			if(!empty($_POST["genre_input"])){
+				$genre_input = $_POST["genre_input"];
+			} else {
+				$genre_input_error = "Sisesta filmi zanr.";
+			}
+			if(!empty($_POST["studio_input"])){
+				$studio_input = $_POST["studio_input"];
+			} else {
+				$studio_input_error = "Sisesta filmistuudio.";
+			}
+			if(!empty($_POST["director_input"])){
+				$director_input = $_POST["director_input"];
+			} else {
+				$director_input_error = "Sisesta filmi rezissöör.";
+			}
+			if(empty($title_input_error) and empty($year_input_error) and empty($duration_input_error) and empty($genre_input_error) and empty($studio_input_error) and empty($director_input_error)){
+			
+			
+			$film_store_notice = store_film($_POST["title_input"], $_POST["year_input"], $_POST["duration_input"], $_POST["genre_input"], $_POST["studio_input"], $_POST["director_input"]);
 		}else{
 			$film_store_notice = "Osa andmeid on puudu!";
 		}
-	}
+		}
+	
 	
 	
 ?>
